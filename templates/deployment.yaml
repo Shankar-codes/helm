@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  # replicaset labels
+  labels:
+    purpose: helm-repo
+    project: headless-service-demo
+spec:
+  replicas: {{ .Values.deployment.replicas }} #create 3 pods of replica
+  selector:
+    # these labels are used to select the pods
+    matchLabels:
+      purpose: helm-repo
+      project: headless-service-demo
+# pod definition      
+  template:
+    metadata:
+      labels:
+        purpose: helm-repo
+        project: headless-service-demo
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:trixie-perl
