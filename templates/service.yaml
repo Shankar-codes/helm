@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: nginx-load-balancer-demo
 spec:
-  type: {{ .Values.service.LoadBalancer}}
+  type: {{ .Values.service.type }}
   selector:
     project: ellamma-ecommerce
     component: frontend
